@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
     private PlayerStats stats;
-    private int horizontalInput;
-    private int verticalInput;
+    private float MS;
+   
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        stats = GetComponent<PlayerStats>();    
+        stats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        stats.Speed = MS;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Input.GetAxisRaw("Horizontal");
-        Input.GetAxisRaw("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector3 Movement = new Vector3(horizontalInput * MS, 0f, verticalInput * MS);
+        transform.Translate(Movement);
        
        
     }
