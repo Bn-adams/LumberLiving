@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     
 
     private Spawner gSpawner;
-    private int MapSize = 3;
+    
     
     
     private void SpawnGround()

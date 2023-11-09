@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundSpawner : MonoBehaviour, Spawner
 {
     [SerializeField] private GameObject GroundPreFab;
-    private int numSpawns = 9;
+  
     private int MapSize = 3;
     private float spacing = 10f;
   
