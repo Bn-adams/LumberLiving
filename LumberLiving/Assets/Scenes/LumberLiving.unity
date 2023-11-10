@@ -657,6 +657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600505022}
     m_Modifications:
+    - target: {fileID: 1410619195391084297, guid: 13293886aaa218a46afb3ac462d30d6d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 848f87ad998216048a681d8895e42e16, type: 2}
     - target: {fileID: 6473272109250540639, guid: 13293886aaa218a46afb3ac462d30d6d, type: 3}
       propertyPath: m_Name
       value: lTree
@@ -784,12 +788,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8984867650242777725, guid: c94e10637c7397944ab2d67614fbee76, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 848f87ad998216048a681d8895e42e16, type: 2}
+    - target: {fileID: 8984867650242777725, guid: c94e10637c7397944ab2d67614fbee76, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: -3304502258023848992, guid: c94e10637c7397944ab2d67614fbee76, type: 3}
+      objectReference: {fileID: 2100000, guid: 848f87ad998216048a681d8895e42e16, type: 2}
     - target: {fileID: 8984867650242777725, guid: c94e10637c7397944ab2d67614fbee76, type: 3}
       propertyPath: m_SelectedEditorRenderState
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -865,6 +873,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5384298024785373563, guid: a5665614804aee74c87d4c6511be6ad8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 848f87ad998216048a681d8895e42e16, type: 2}
     - target: {fileID: 5384298024785373563, guid: a5665614804aee74c87d4c6511be6ad8, type: 3}
       propertyPath: m_SelectedEditorRenderState
       value: 0
