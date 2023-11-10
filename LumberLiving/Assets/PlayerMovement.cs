@@ -21,10 +21,17 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+        if(horizontalInput != 0 || verticalInput != 0)
+        {
+            rb.velocity = new Vector3(horizontalInput,0,verticalInput);
+            Debug.Log(MS);
+        }
+      
+     
+        //rb.velocity = new Vector3(horizontalInput * MS, rb.velocity.y, verticalInput * MS );
+        //Vector3 Movement = new Vector3(horizontalInput * MS, 0f, verticalInput * MS);
+        //transform.Translate(Movement);
 
-        Vector3 Movement = new Vector3(horizontalInput * MS, 0f, verticalInput * MS);
-        transform.Translate(Movement);
-       
-       
+
     }
 }
