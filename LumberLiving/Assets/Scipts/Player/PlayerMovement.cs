@@ -6,14 +6,15 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
     private PlayerStats stats;
-    private float MS;
+    private float ms;
+    
    
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         stats = GameObject.Find("Player").GetComponent<PlayerStats>();
-        stats.Speed = MS;
+        ms = stats.Speed;
     }
 
     // Update is called once per frame
@@ -23,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         if(horizontalInput != 0 || verticalInput != 0)
         {
-            rb.velocity = new Vector3(horizontalInput,0,verticalInput);
-            Debug.Log(MS);
+            rb.velocity = new Vector3(horizontalInput*ms,rb.velocity.y,verticalInput*ms);
+            
         }
       
      

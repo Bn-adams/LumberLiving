@@ -5,6 +5,7 @@ using UnityEngine;
 public class GroundSpawner : MonoBehaviour, Spawner
 {
     [SerializeField] private GameObject GroundPreFab;
+    [SerializeField] private GameObject sTree;
   
     private int MapSize = 5;
     private float spacing = 10f;
@@ -20,7 +21,7 @@ public class GroundSpawner : MonoBehaviour, Spawner
                 newGround.transform.parent = transform;
             }
         }
-
+        
         // You can return something meaningful, or return null in this case.
         return null;
 
