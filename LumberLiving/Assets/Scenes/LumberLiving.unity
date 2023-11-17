@@ -314,7 +314,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GroundPreFab: {fileID: 600505018}
-  sTree: {fileID: 9092325041083347366, guid: b68e766c3b6758a498ebd1d741755479, type: 3}
 --- !u!4 &887565387
 Transform:
   m_ObjectHideFlags: 0
@@ -540,7 +539,7 @@ PrefabInstance:
     - target: {fileID: 8680753154206400641, guid: b68e766c3b6758a498ebd1d741755479, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7757849493994052420, guid: da41835086731084588d7e3e80fc9361, type: 3}
     - target: {fileID: 9092325041083347366, guid: b68e766c3b6758a498ebd1d741755479, type: 3}
       propertyPath: m_Name
       value: sTree
@@ -756,7 +755,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4103268387997100218, guid: 28b828b9ee049934582cb0f74f6ab86e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.57
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4103268387997100218, guid: 28b828b9ee049934582cb0f74f6ab86e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -797,7 +796,7 @@ PrefabInstance:
     - target: {fileID: 4958237945473151633, guid: 28b828b9ee049934582cb0f74f6ab86e, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7757849493994052420, guid: da41835086731084588d7e3e80fc9361, type: 3}
     - target: {fileID: 5564001919366270679, guid: 28b828b9ee049934582cb0f74f6ab86e, type: 3}
       propertyPath: m_Name
       value: mTree
@@ -867,7 +866,7 @@ PrefabInstance:
     - target: {fileID: 4908312628032942815, guid: 979f0156f3648ac41a9468c3bb67b3ce, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7757849493994052420, guid: da41835086731084588d7e3e80fc9361, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
