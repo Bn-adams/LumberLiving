@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private PlayerStats stats;
     private float ms;
+    private Vector3 moveDirection;
+    public Transform orientation;
+    
 
 
 
@@ -45,7 +48,8 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         if (horizontalInput != 0 || verticalInput != 0)
         {
-            rb.velocity = new Vector3(horizontalInput * ms, rb.velocity.y, verticalInput * ms);
+            moveDirection = orientation.right * horizontalInput + orientation.forward * verticalInput;
+            rb.velocity = (moveDirection * ms);
 
         }
     }
