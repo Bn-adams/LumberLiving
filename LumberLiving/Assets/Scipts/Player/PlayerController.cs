@@ -8,23 +8,31 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private PlayerStats stats;
     private float ms;
-    private int wc;
-   
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         stats = GameObject.Find("Player").GetComponent<PlayerStats>();
-        ms = stats.Speed;
-        
+        if (stats != null)
+        {
+            ms = stats.Speed;
+        }
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
-      
-     
+        
+        Debug.Log(stats.WoodCount);
+       
+
+
+
         //rb.velocity = new Vector3(horizontalInput * MS, rb.velocity.y, verticalInput * MS );
         //Vector3 Movement = new Vector3(horizontalInput * MS, 0f, verticalInput * MS);
         //transform.Translate(Movement);
@@ -41,15 +49,30 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    public void Collection()
+    public void OnTriggerEnter(Collider other)
     {
-        void OnTriggerEnter(Collision other)
+        
+        if (other.gameObject.CompareTag("Wood"))
         {
-            if (other.gameObject.CompareTag("Wood"))
+            Destroy(other.gameObject);
+            if(stats != null)
             {
-                GameObject.Destroy(gameObject);
-                
+                stats.WoodCount++;
             }
+            
+
         }
+
     }
+
+
+
+
+
+
+
+
+
+
+
 }
