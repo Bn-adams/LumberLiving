@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
         
-        Debug.Log(stats.WoodCount);
+        
        
 
 
