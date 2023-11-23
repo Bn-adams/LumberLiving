@@ -11,7 +11,7 @@ public class SwingAxe : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            axeHolder.GetComponent<Animator>().Play("Take 001");
+            axeHolder.GetComponent<Animator>().Play("BaseLayer.Take 001");
         }
        
     }
