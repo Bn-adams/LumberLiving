@@ -1,17 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwingAxe : MonoBehaviour
 {
-    public GameObject axeHolder;
     
-   
+    private Animator AxeSwing;
+
+
+    void Start()
+    {
+        AxeSwing = GetComponent<Animator>();
+    }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (AxeSwing != null)
         {
-            axeHolder.GetComponent<Animator>().Play("BaseLayer.Take 001");
+            if(Input.GetKey(KeyCode.Space))
+            {
+                AxeSwing.SetTrigger("TrAttack");
+                AxeSwing.SetTrigger("TrAfter");
+            }
+          
+
+        }
+       // if (Input.GetMouseButtonDown(0))
+        {
+         //   axeHolder.GetComponent<Animator>().Play("BaseLayer.Take 001");
         }
        
     }

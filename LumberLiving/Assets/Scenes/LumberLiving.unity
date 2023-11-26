@@ -459,7 +459,6 @@ GameObject:
   - component: {fileID: 1385881376}
   - component: {fileID: 1385881378}
   - component: {fileID: 1385881377}
-  - component: {fileID: 1385881379}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -537,19 +536,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 1888178855}
---- !u!114 &1385881379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385881374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5daf983b590bd0f41915ef2086fee466, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axeHolder: {fileID: 1851022318}
 --- !u!1 &1482473899
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1851022320}
   - component: {fileID: 1851022321}
+  - component: {fileID: 1851022322}
   m_Layer: 0
   m_Name: AxeHolder
   m_TagString: Untagged
@@ -711,6 +698,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1851022322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851022318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5daf983b590bd0f41915ef2086fee466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1888178854
 GameObject:
   m_ObjectHideFlags: 0
