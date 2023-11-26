@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private float ms;
     private Vector3 moveDirection;
     public Transform orientation;
-    
+
 
 
 
@@ -23,24 +23,17 @@ public class PlayerController : MonoBehaviour
         {
             ms = stats.Speed;
         }
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
-        
-        
-       
-
-
 
         //rb.velocity = new Vector3(horizontalInput * MS, rb.velocity.y, verticalInput * MS );
         //Vector3 Movement = new Vector3(horizontalInput * MS, 0f, verticalInput * MS);
         //transform.Translate(Movement);
-
-
     }
     public void Movement()
     {
@@ -53,21 +46,9 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    public void OnTriggerEnter(Collider other)
-    {
-        
-        if (other.gameObject.CompareTag("Wood"))
-        {
-            Destroy(other.gameObject);
-            if(stats != null)
-            {
-                stats.WoodCount++;
-            }
-            
 
-        }
 
-    }
+}   
 
 
 
@@ -79,4 +60,4 @@ public class PlayerController : MonoBehaviour
 
 
 
-}
+
