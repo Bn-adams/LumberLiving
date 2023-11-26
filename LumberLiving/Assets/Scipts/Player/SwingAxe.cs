@@ -9,9 +9,12 @@ public class SwingAxe : MonoBehaviour
     void Start()
     {
         AxeSwing = GetComponent<Animator>();
+        
     }
     void Update()
     {
+        AxeSwing.SetTrigger("TrIDLE");
+
         if (AxeSwing != null)
         {
             if(Input.GetKey(KeyCode.Space))
