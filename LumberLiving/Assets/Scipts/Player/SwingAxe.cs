@@ -13,18 +13,24 @@ public class SwingAxe : MonoBehaviour
     }
     void Update()
     {
-        AxeSwing.SetTrigger("TrIDLE");
+        
 
         if (AxeSwing != null)
         {
             if(Input.GetKey(KeyCode.Space))
             {
-                AxeSwing.SetTrigger("TrAttack");
-                AxeSwing.SetTrigger("TrAfter");
+                AxeSwing.SetTrigger("TrA");
+                
             }
-          
+            else
+            {
+                AxeSwing.SetTrigger("TrB");
+                AxeSwing.SetTrigger("TrI");
+            }
+            
 
         }
+
        // if (Input.GetMouseButtonDown(0))
         {
          //   axeHolder.GetComponent<Animator>().Play("BaseLayer.Take 001");
