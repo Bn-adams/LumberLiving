@@ -3,8 +3,8 @@ using UnityEngine;
 public class SwingAxe : MonoBehaviour
 {
     
-    private Animator AxeSwing;
-
+    public Animator AxeSwing;
+    private bool hasHit=false;
 
     void Start()
     {
@@ -19,19 +19,21 @@ public class SwingAxe : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.Space))
             {
-                AxeSwing.SetTrigger("TrA");
-                
+                AxeSwing.SetTrigger("TrAttack");
+                hasHit = true;
+
             }
-            else
+            if (Input.GetKey(KeyCode.Space) && hasHit)
             {
                 AxeSwing.SetTrigger("TrB");
-                AxeSwing.SetTrigger("TrI");
+                hasHit = false;
             }
-            
+
 
         }
+       
 
-       // if (Input.GetMouseButtonDown(0))
+        // if (Input.GetMouseButtonDown(0))
         {
          //   axeHolder.GetComponent<Animator>().Play("BaseLayer.Take 001");
         }
