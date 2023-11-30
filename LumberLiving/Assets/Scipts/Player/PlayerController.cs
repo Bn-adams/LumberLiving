@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,8 +11,9 @@ public class PlayerController : MonoBehaviour
     private float ms;
     private Vector3 moveDirection;
     public Transform orientation;
-
-
+    public StaminaBar staminaBar;
+    public TreeMining treeMining;
+    public int staminaUse;
 
 
     // Start is called before the first frame update
@@ -23,6 +25,8 @@ public class PlayerController : MonoBehaviour
         {
             ms = stats.Speed;
         }
+        stats.StaminaCount = stats.MaxStamina;
+        staminaBar.SetMaxStamina(stats.MaxStamina);
         
 
     }
@@ -32,9 +36,11 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
 
+
         //rb.velocity = new Vector3(horizontalInput * MS, rb.velocity.y, verticalInput * MS );
         //Vector3 Movement = new Vector3(horizontalInput * MS, 0f, verticalInput * MS);
         //transform.Translate(Movement);
+        Debug.Log(stats.StaminaCount);
     }
     public void Movement()
     {
@@ -45,7 +51,20 @@ public class PlayerController : MonoBehaviour
             moveDirection = orientation.right * horizontalInput + orientation.forward * verticalInput;
             rb.velocity = (moveDirection * ms);
 
+            UseStamina(0.1f);
         }
+        w
+    }
+    public void Chop()
+    {
+       
+        
+    }
+    public void UseStamina(float staminaUse)
+    {
+        stats.StaminaCount -= staminaUse;
+        staminaBar.SetStamina(stats.StaminaCount);
+
     }
 
 

@@ -14,7 +14,7 @@ public class PlayerStats : MonoBehaviour
 
     private float staminaCount;
 
-    public StaminaBar stamina;
+    
 
    
 
@@ -25,10 +25,5 @@ public class PlayerStats : MonoBehaviour
     public int WoodCount { get => woodCount; set => woodCount = value; }
     public float MaxStamina { get => maxStamina; set => maxStamina = value; }
     public float StaminaCount { get => staminaCount; set => staminaCount = value; }
-    private void Start()
-    {
-        StaminaCount = maxStamina;
-        
-
-    }
+    
 }

@@ -10,6 +10,7 @@ public class TreeMining : MonoBehaviour
     [SerializeField]
     private GameObject Wood;
     private float waitTime = 0.5f;
+    private PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -27,20 +28,21 @@ public class TreeMining : MonoBehaviour
             Vector3 spawnPosition = randomPosition;
             GameObject newWood = Instantiate(Wood, transform.parent.position + spawnPosition, Quaternion.identity);
             canBeHarvested = false;
+            
         }
     }
     // Update is called once per frame
     void Update()
     {
-        if(canBeHarvested && Input.GetKey(KeyCode.Space))
+        if (canBeHarvested && Input.GetKey(KeyCode.Space))
         {
             isHarvested = true;
             StartCoroutine(TreeDestroy());
             
         }
 
-       
-    
+
+
     }
     
 
