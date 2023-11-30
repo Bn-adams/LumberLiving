@@ -639,6 +639,7 @@ GameObject:
   - component: {fileID: 766871965}
   - component: {fileID: 766871964}
   - component: {fileID: 766871966}
+  - component: {fileID: 766871967}
   m_Layer: 0
   m_Name: Stamina_CanvsGroup
   m_TagString: Untagged
@@ -737,6 +738,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &766871967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766871962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b8e8fe1e1f8c1498db4f8e319b1cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
 --- !u!1 &771593089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8be7c05a7f5ba468e658ba92d60a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stamina: {fileID: 0}
 --- !u!114 &1385881378
 MonoBehaviour:
   m_ObjectHideFlags: 0
