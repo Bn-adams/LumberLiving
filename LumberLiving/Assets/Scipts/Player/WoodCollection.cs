@@ -14,6 +14,7 @@ public class WoodCollection : MonoBehaviour
     {
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
+    //destroys the wood when collided and adds to the wood count 
     public void OnTriggerEnter(Collider other)
     {
        

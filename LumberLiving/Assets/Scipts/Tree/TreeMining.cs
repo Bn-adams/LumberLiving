@@ -26,6 +26,7 @@ public class TreeMining : MonoBehaviour
         stats = GameObject.Find("Player").GetComponent<PlayerStats>();
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
+    //used to delay the logic of the on destroy logic till after the animation and spawns then wood then aswell 
     public IEnumerator TreeDestroy()
     {
         isHarvested = true;
@@ -34,7 +35,7 @@ public class TreeMining : MonoBehaviour
         GameObject.Destroy(gameObject);
         if (isHarvested)
         {
-            Vector3 randomPosition = new Vector3(UnityEngine.Random.Range(-2, 2), 0, UnityEngine.Random.Range(-2, 2));
+            Vector3 randomPosition = new Vector3(UnityEngine.Random.Range(-1, 1), 0, UnityEngine.Random.Range(-1, 1));
             Vector3 spawnPosition = randomPosition;
             GameObject newWood = Instantiate(Wood, transform.parent.position + spawnPosition, Quaternion.identity);
             
@@ -49,7 +50,7 @@ public class TreeMining : MonoBehaviour
         
 
     }
-
+    //checks the player is close enough 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -62,7 +63,7 @@ public class TreeMining : MonoBehaviour
 
 
     
-   
+   //runs the destroy logic when the player is near and attacking
     public void ChopCheck()
     {
         if (canBeHarvested && playerController.isAttacking)

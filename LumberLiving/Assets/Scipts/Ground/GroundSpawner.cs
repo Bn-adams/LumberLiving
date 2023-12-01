@@ -7,7 +7,7 @@ public class GroundSpawner : MonoBehaviour, Spawner
     [SerializeField] private GameObject GroundPreFab;
     
   
-    private int MapSize = 5;
+    private int MapSize = 10;
     private float spacing = 10f;
   
     public GameObject Spawn(GameObject caller)
@@ -22,7 +22,7 @@ public class GroundSpawner : MonoBehaviour, Spawner
             }
         }
         
-        // You can return something meaningful, or return null in this case.
+       
         return null;
 
 

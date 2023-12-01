@@ -6,10 +6,12 @@ public class SwingAxe : MonoBehaviour
     
     public Animator AxeSwing;
     private bool hasHit=false;
+    PlayerStats stats;
 
     void Start()
     {
         AxeSwing = GetComponent<Animator>();
+        stats = GameObject.Find("Player").GetComponent<PlayerStats>();
         
     }
     void Update()
@@ -18,17 +20,21 @@ public class SwingAxe : MonoBehaviour
 
         if (AxeSwing != null)
         {
-            if(Input.GetMouseButton(0))
+            if (stats.StaminaCount > 0)
             {
-                AxeSwing.SetTrigger("TrAttack");
-                hasHit = true;
+                if (Input.GetMouseButton(0))
+                {
+                    AxeSwing.SetTrigger("TrAttack");
+                    hasHit = true;
 
+                }
+                if (Input.GetMouseButton(0) && hasHit)
+                {
+                    AxeSwing.SetTrigger("TrB");
+                    hasHit = false;
+                }
             }
-            if (Input.GetMouseButton(0) && hasHit)
-            {
-                AxeSwing.SetTrigger("TrB");
-                hasHit = false;
-            }
+            
 
 
         }

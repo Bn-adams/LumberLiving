@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
         //transform.Translate(Movement);
         Debug.Log(staminaBar.fillAmount);
     }
+    //Controls the player movement and get inputs 
     public void Movement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -67,6 +68,19 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+    //Calls the chop logic when right input is pressed and has enough stam 
+    public void Chopping()
+    {
+        if (Input.GetMouseButton(0) && !isPressed && stats.StaminaCount > 0)
+        {
+
+            isAttacking = true;
+            StartCoroutine(Chop());
+
+
+        }
+    }
+    // stam adjustments made here for chop 
     public IEnumerator Chop()
     {
         isPressed = true;
@@ -85,17 +99,7 @@ public class PlayerController : MonoBehaviour
         slider.value = staminaBar.fillAmount;
         isPressed = false;
     }
-    public void Chopping()
-    {
-        if(Input.GetMouseButton(0)&&!isPressed)
-        {
-
-            isAttacking = true;
-            StartCoroutine(Chop());
-            
-
-        }
-    }
+   
     
     
 
