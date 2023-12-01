@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour
 
     private int woodCount = 0;
 
-    private float maxStamina = 1f;
+    private float maxStamina;
 
     private float staminaCount;
 

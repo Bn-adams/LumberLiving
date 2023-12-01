@@ -18,13 +18,13 @@ public class SwingAxe : MonoBehaviour
 
         if (AxeSwing != null)
         {
-            if(Input.GetKey(KeyCode.Space))
+            if(Input.GetMouseButton(0))
             {
                 AxeSwing.SetTrigger("TrAttack");
                 hasHit = true;
 
             }
-            if (Input.GetKey(KeyCode.Space) && hasHit)
+            if (Input.GetMouseButton(0) && hasHit)
             {
                 AxeSwing.SetTrigger("TrB");
                 hasHit = false;

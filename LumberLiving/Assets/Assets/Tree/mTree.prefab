@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7732907570525951582}
   - component: {fileID: 937209073303580422}
   - component: {fileID: 3118226932943330255}
-  - component: {fileID: 6606867372479736561}
   - component: {fileID: 4958237945473151633}
   m_Layer: 0
   m_Name: mTree
@@ -118,18 +117,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.1456413, y: 11.649755, z: 2.1413474}
   m_Center: {x: 1.043992, y: 5.8248773, z: -0.50073105}
---- !u!114 &6606867372479736561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5564001919366270679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a75877ade97dd8d4fa23beb026eb1af6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4958237945473151633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeHarvested: 0
   isHarvested: 0
+  staminaBar: {fileID: 0}
   Wood: {fileID: 0}
 --- !u!1 &5586740842421496165
 GameObject:

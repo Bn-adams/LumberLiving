@@ -3,17 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //Movement Variables
     private Rigidbody rb;
     private PlayerStats stats;
     private float ms;
     private Vector3 moveDirection;
     public Transform orientation;
-    public StaminaBar staminaBar;
-    public TreeMining treeMining;
-    public int staminaUse;
+    //Stamina Variables
+    private float waitTime = 0.5f;
+    public Image staminaBar;
+    public Slider slider;
+    public bool isAttacking=false;
+    public float attackCost = 1;
+    public bool isPressed = false;
+    
+    
+    
 
 
     // Start is called before the first frame update
@@ -21,12 +30,14 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         stats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        
         if (stats != null)
         {
             ms = stats.Speed;
+            stats.MaxStamina = 100;
+            stats.StaminaCount = 100;
         }
-        stats.StaminaCount = stats.MaxStamina;
-        staminaBar.SetMaxStamina(stats.MaxStamina);
+       
         
 
     }
@@ -35,12 +46,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Movement();
-
+        Chopping();
+       
 
         //rb.velocity = new Vector3(horizontalInput * MS, rb.velocity.y, verticalInput * MS );
         //Vector3 Movement = new Vector3(horizontalInput * MS, 0f, verticalInput * MS);
         //transform.Translate(Movement);
-        Debug.Log(stats.StaminaCount);
+        Debug.Log(staminaBar.fillAmount);
     }
     public void Movement()
     {
@@ -51,21 +63,41 @@ public class PlayerController : MonoBehaviour
             moveDirection = orientation.right * horizontalInput + orientation.forward * verticalInput;
             rb.velocity = (moveDirection * ms);
 
-            UseStamina(0.1f);
+            
         }
-        w
-    }
-    public void Chop()
-    {
-       
         
     }
-    public void UseStamina(float staminaUse)
+    public IEnumerator Chop()
     {
-        stats.StaminaCount -= staminaUse;
-        staminaBar.SetStamina(stats.StaminaCount);
+        isPressed = true;
+        yield return new WaitForSeconds(waitTime);
 
+        isAttacking = false;
+        Debug.Log("Attack");
+
+        stats.StaminaCount -= attackCost;
+        if (stats.StaminaCount < 0) stats.StaminaCount = 0;
+
+        staminaBar.fillAmount = stats.StaminaCount / stats.MaxStamina;
+
+
+
+        slider.value = staminaBar.fillAmount;
+        isPressed = false;
     }
+    public void Chopping()
+    {
+        if(Input.GetMouseButton(0)&&!isPressed)
+        {
+
+            isAttacking = true;
+            StartCoroutine(Chop());
+            
+
+        }
+    }
+    
+    
 
 
 }   

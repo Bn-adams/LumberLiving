@@ -67,7 +67,6 @@ GameObject:
   - component: {fileID: 5099923716422839346}
   - component: {fileID: 6209526189728479624}
   - component: {fileID: 8680753154206400641}
-  - component: {fileID: 8689008507226318288}
   m_Layer: 0
   m_Name: sTree
   m_TagString: Untagged
@@ -186,16 +185,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeHarvested: 0
   isHarvested: 0
+  staminaBar: {fileID: 0}
   Wood: {fileID: 0}
---- !u!114 &8689008507226318288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9092325041083347366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a75877ade97dd8d4fa23beb026eb1af6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -16,12 +16,6 @@ public class StaminaBar : MonoBehaviour
     {
         slider.value = stamina;
     }
-    private void Update()
-    {
-        if (playerStats != null)
-        {
-            
-        }
-    }
+    
 
 }
