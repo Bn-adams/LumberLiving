@@ -168,8 +168,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1496398, y: 14.742584, z: 1.9860773}
-  m_Center: {x: -0.077427864, y: 7.371292, z: -0.30755773}
+  m_Size: {x: 2.297987, y: 14.742584, z: 2.6741219}
+  m_Center: {x: 0.049891472, y: 7.371292, z: 0.03646469}
 --- !u!114 &4908312628032942815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,5 +184,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeHarvested: 0
   isHarvested: 0
-  staminaBar: {fileID: 0}
   Wood: {fileID: 0}

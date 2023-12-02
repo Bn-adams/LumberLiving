@@ -1,23 +1,27 @@
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class SwingAxe : MonoBehaviour
 {
-    
+
     public Animator AxeSwing;
-    private bool hasHit=false;
+    private bool hasHit = false;
     PlayerStats stats;
 
     void Start()
     {
         AxeSwing = GetComponent<Animator>();
         stats = GameObject.Find("Player").GetComponent<PlayerStats>();
-        
+
     }
     void Update()
     {
-        
+        SwingCheck();
+    }
 
+    private void SwingCheck()
+    {
         if (AxeSwing != null)
         {
             if (stats.StaminaCount > stats.AttackCost)
@@ -34,16 +38,11 @@ public class SwingAxe : MonoBehaviour
                     hasHit = false;
                 }
             }
-            
-
-
         }
-       
-
-        // if (Input.GetMouseButtonDown(0))
-        {
-         //   axeHolder.GetComponent<Animator>().Play("BaseLayer.Take 001");
-        }
-       
     }
 }
+
+    
+        
+    
+

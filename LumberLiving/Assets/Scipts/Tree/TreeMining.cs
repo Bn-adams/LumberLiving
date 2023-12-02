@@ -35,7 +35,7 @@ public class TreeMining : MonoBehaviour
         GameObject.Destroy(gameObject);
         if (isHarvested)
         {
-            Vector3 randomPosition = new Vector3(UnityEngine.Random.Range(-1, 1) , 0, UnityEngine.Random.Range(-1, 1)) ;
+            Vector3 randomPosition = new Vector3(UnityEngine.Random.Range(-1, 1) , 0.2f, UnityEngine.Random.Range(-1, 1)) ;
             Vector3 spawnPosition = randomPosition;
             GameObject newWood = Instantiate(Wood, transform.parent.position + spawnPosition, Quaternion.identity);
             

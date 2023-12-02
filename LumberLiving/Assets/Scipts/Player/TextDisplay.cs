@@ -15,6 +15,7 @@ public class TextDisplay : MonoBehaviour
         text.SetActive(false);
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
+    //show press f to burn when in zone 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
@@ -23,6 +24,8 @@ public class TextDisplay : MonoBehaviour
             playerStats.CanBurnWood = true;
         }
     }
+    // removes press f to burn when in zone 
+
     private void OnTriggerExit(Collider other)
     {
         if(other.tag == "Player")

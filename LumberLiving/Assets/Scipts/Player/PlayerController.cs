@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
     {
         if(stats != null)
         {
-            if (Input.GetKey(KeyCode.F) && stats.CanBurnWood&&!isBuring )
+            if (Input.GetKey(KeyCode.F) && stats.CanBurnWood&&!isBuring&&stats.WoodCount != 0 )
             {
                 
                 isBuring = true;
@@ -140,10 +140,10 @@ public class PlayerController : MonoBehaviour
    public IEnumerator BurnWoodDelay()
     {
         textDisplay.text.SetActive(false);
-        //set trigger for wood on fire animation + lock move
+        
         yield return new WaitForSeconds(2);
         textDisplay.text.SetActive(true);
-        //set trigger for back to idle + unlock move
+        
 
         stats.WoodCount--;
         WoodText.text = "Wood: " + stats.WoodCount;
