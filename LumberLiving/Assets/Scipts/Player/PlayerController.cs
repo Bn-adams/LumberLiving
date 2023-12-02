@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public Image staminaBar;
     public Slider slider;
     public bool isAttacking=false;
-    public float attackCost = 1;
+    
     public bool isPressed = false;
     
     
@@ -61,17 +61,36 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         if (horizontalInput != 0 || verticalInput != 0)
         {
-            moveDirection = orientation.right * horizontalInput + orientation.forward * verticalInput;
-            rb.velocity = (moveDirection * ms);
+            if(stats.StaminaCount > 0)
+            {
+                moveDirection = orientation.right * horizontalInput + orientation.forward * verticalInput;
+                rb.velocity = (moveDirection * ms);
+                //StartCoroutine(WalkStamDelay());
 
+                stats.StaminaCount -= stats.WalkCost * Time.deltaTime;
+                if (stats.StaminaCount < stats.MinStamina) stats.StaminaCount = stats.MinStamina;
+
+                staminaBar.fillAmount = stats.StaminaCount / stats.MaxStamina;
+
+                slider.value = staminaBar.fillAmount;
+            }
             
+
+
         }
         
+    }
+    private IEnumerator WalkStamDelay()
+    {
+        
+        yield return new WaitForSeconds(1);
+        //stam adjustments for walking 
+       
     }
     //Calls the chop logic when right input is pressed and has enough stam 
     public void Chopping()
     {
-        if (Input.GetMouseButton(0) && !isPressed && stats.StaminaCount > 0)
+        if (Input.GetMouseButton(0) && !isPressed && stats.StaminaCount > stats.AttackCost)
         {
 
             isAttacking = true;
@@ -89,8 +108,8 @@ public class PlayerController : MonoBehaviour
         isAttacking = false;
         Debug.Log("Attack");
 
-        stats.StaminaCount -= attackCost;
-        if (stats.StaminaCount < 0) stats.StaminaCount = 0;
+        stats.StaminaCount -= stats.AttackCost;
+        if (stats.StaminaCount < stats.MinStamina) stats.StaminaCount = stats.MinStamina;
 
         staminaBar.fillAmount = stats.StaminaCount / stats.MaxStamina;
 

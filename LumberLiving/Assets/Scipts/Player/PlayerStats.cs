@@ -12,7 +12,13 @@ public class PlayerStats : MonoBehaviour
 
     private float maxStamina;
 
+    private float minStamina;
+
     private float staminaCount;
+
+    private float attackCost = 5;
+
+    private float walkCost = 0.5f;
 
     
 
@@ -24,6 +30,9 @@ public class PlayerStats : MonoBehaviour
     public float JumpHeight { get => jumpHeight; set => jumpHeight = value; }
     public int WoodCount { get => woodCount; set => woodCount = value; }
     public float MaxStamina { get => maxStamina; set => maxStamina = value; }
+    public float MinStamina { get => minStamina; set =>minStamina = value; }
     public float StaminaCount { get => staminaCount; set => staminaCount = value; }
-    
+    public float AttackCost { get => attackCost; set => attackCost = value; }
+    public float WalkCost { get => walkCost; set => walkCost = value; }
+        
 }

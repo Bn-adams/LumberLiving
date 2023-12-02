@@ -20,7 +20,7 @@ public class SwingAxe : MonoBehaviour
 
         if (AxeSwing != null)
         {
-            if (stats.StaminaCount > 0)
+            if (stats.StaminaCount > stats.AttackCost)
             {
                 if (Input.GetMouseButton(0))
                 {
