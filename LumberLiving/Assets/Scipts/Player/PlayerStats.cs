@@ -20,6 +20,9 @@ public class PlayerStats : MonoBehaviour
 
     private float walkCost = 0.5f;
 
+    private bool canBurnWood = false;
+
+
     
 
    
@@ -34,5 +37,6 @@ public class PlayerStats : MonoBehaviour
     public float StaminaCount { get => staminaCount; set => staminaCount = value; }
     public float AttackCost { get => attackCost; set => attackCost = value; }
     public float WalkCost { get => walkCost; set => walkCost = value; }
+    public bool CanBurnWood { get => canBurnWood; set => canBurnWood = value; }
         
 }

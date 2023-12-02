@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,11 +19,15 @@ public class PlayerController : MonoBehaviour
     public Image staminaBar;
     public Slider slider;
     public bool isAttacking=false;
-    
     public bool isPressed = false;
-    
-    
-    
+    //Campfire Variables
+    private TextDisplay textDisplay;
+    [SerializeField] private TextMeshProUGUI WoodText;
+    public bool isBuring = false;
+    private float WoodBurnAmount = 10;
+
+
+
 
 
     // Start is called before the first frame update
@@ -30,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         stats = GameObject.Find("Player").GetComponent<PlayerStats>();
-        
+        textDisplay = GameObject.Find("Campfire").GetComponent<TextDisplay>();
         if (stats != null)
         {
             ms = stats.Speed;
@@ -47,11 +52,9 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
         Chopping();
+        BurnWood();
        
 
-        //rb.velocity = new Vector3(horizontalInput * MS, rb.velocity.y, verticalInput * MS );
-        //Vector3 Movement = new Vector3(horizontalInput * MS, 0f, verticalInput * MS);
-        //transform.Translate(Movement);
         Debug.Log(staminaBar.fillAmount);
     }
     //Controls the player movement and get inputs 
@@ -118,7 +121,39 @@ public class PlayerController : MonoBehaviour
         slider.value = staminaBar.fillAmount;
         isPressed = false;
     }
-   
+
+    public void BurnWood()
+    {
+        if(stats != null)
+        {
+            if (Input.GetKey(KeyCode.F) && stats.CanBurnWood&&!isBuring )
+            {
+                
+                isBuring = true;
+                StartCoroutine(BurnWoodDelay());
+
+            }
+        }
+       
+        
+    }
+   public IEnumerator BurnWoodDelay()
+    {
+        textDisplay.text.SetActive(false);
+        //set trigger for wood on fire animation + lock move
+        yield return new WaitForSeconds(2);
+        textDisplay.text.SetActive(true);
+        //set trigger for back to idle + unlock move
+
+        stats.WoodCount--;
+        WoodText.text = "Wood: " + stats.WoodCount;
+        isBuring = false;
+       
+        stats.StaminaCount = WoodBurnAmount + stats.StaminaCount;
+        if (stats.StaminaCount > stats.MaxStamina) stats.StaminaCount = stats.MaxStamina;
+        staminaBar.fillAmount = stats.StaminaCount / stats.MaxStamina;
+        slider.value = staminaBar.fillAmount;
+    }
     
     
 

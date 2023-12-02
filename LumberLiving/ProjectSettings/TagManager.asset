@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GroundPreFab
   - Wood
+  - Campfire
   layers:
   - Default
   - TransparentFX
