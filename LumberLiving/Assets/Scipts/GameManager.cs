@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     private Spawner gSpawner;
     
     
-    
     private void SpawnGround()
     {
         GameObject newGround = gSpawner.Spawn(gameObject);

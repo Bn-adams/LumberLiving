@@ -7,7 +7,7 @@ public class TextDisplay : MonoBehaviour
 {
     public GameObject text;
     PlayerStats playerStats;
-    [SerializeField] private TextMeshProUGUI WoodText;
+    
 
     // Start is called before the first frame update
     void Start()

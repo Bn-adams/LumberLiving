@@ -5,17 +5,24 @@ using UnityEngine;
 
 public class GameStats : MonoBehaviour
 {
-    private float speed = 5f;
 
-    private float jumpHeight = 2f;
 
-    private int mapSize = 3;
 
- 
 
-    public float Speed { get => speed; set => speed = value; }
-    public float JumpHeight { get => jumpHeight; set => jumpHeight = value; }
-    public int MapSize { get => mapSize; set => mapSize = value; }
+
+    private float gameClockMax;
+    private float gameClockCurrent;
+
+
+
+
+
+
+
+  
+    public float GameClockMax { get => gameClockMax; set => gameClockMax = value; }
+    public float GameClockCurrent { get => gameClockCurrent; set => gameClockCurrent = value; }
+
 
 
    

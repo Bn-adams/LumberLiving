@@ -137,6 +137,7 @@ public class PlayerController : MonoBehaviour
        
         
     }
+
    public IEnumerator BurnWoodDelay()
     {
         textDisplay.text.SetActive(false);
