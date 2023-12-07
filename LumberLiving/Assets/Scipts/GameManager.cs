@@ -8,12 +8,13 @@ public class GameManager : MonoBehaviour
     
 
     private Spawner gSpawner;
-    
+    private GameStats stats;
     
     
     private void SpawnGround()
     {
         GameObject newGround = gSpawner.Spawn(gameObject);
+        stats = GameObject.Find("Player").GetComponent<GameStats>();
     }
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,21 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        CounterCheck();
+    }
+    public void CounterCheck()
+    {
+        if(stats != null)
+        {
+            if(stats.GameClockCurrent == 0)
+            {
+                Debug.Log("Game end");
+                GameEnd();
+            }
+        }
+    }
+    private void GameEnd()
     {
         
     }

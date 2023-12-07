@@ -5,11 +5,16 @@ using UnityEngine;
 public class GroundSpawner : MonoBehaviour, Spawner
 {
     [SerializeField] private GameObject GroundPreFab;
+    private GameStats gameStats;
     
   
-    private int MapSize = 5;
+    private int MapSize = 25;
     private float spacing = 10f;
-  
+
+    void Start()
+    {
+        
+    }
     public GameObject Spawn(GameObject caller)
     {
         for (int x = 0; x < MapSize; x++)
@@ -22,7 +27,7 @@ public class GroundSpawner : MonoBehaviour, Spawner
             }
         }
         
-        // You can return something meaningful, or return null in this case.
+       
         return null;
 
 
@@ -37,10 +42,7 @@ public class GroundSpawner : MonoBehaviour, Spawner
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  
 
     // Update is called once per frame
     void Update()

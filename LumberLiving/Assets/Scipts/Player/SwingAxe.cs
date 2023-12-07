@@ -1,31 +1,48 @@
+using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class SwingAxe : MonoBehaviour
 {
-    
-    private Animator AxeSwing;
 
+    public Animator AxeSwing;
+    private bool hasHit = false;
+    PlayerStats stats;
 
     void Start()
     {
         AxeSwing = GetComponent<Animator>();
+        stats = GameObject.Find("Player").GetComponent<PlayerStats>();
+
     }
     void Update()
     {
+        SwingCheck();
+    }
+
+    private void SwingCheck()
+    {
         if (AxeSwing != null)
         {
-            if(Input.GetKey(KeyCode.Space))
+            if (stats.StaminaCount > stats.AttackCost)
             {
-                AxeSwing.SetTrigger("TrAttack");
-                AxeSwing.SetTrigger("TrAfter");
-            }
-          
+                if (Input.GetMouseButton(0))
+                {
+                    AxeSwing.SetTrigger("TrAttack");
+                    hasHit = true;
 
+                }
+                if (Input.GetMouseButton(0) && hasHit)
+                {
+                    AxeSwing.SetTrigger("TrB");
+                    hasHit = false;
+                }
+            }
         }
-       // if (Input.GetMouseButtonDown(0))
-        {
-         //   axeHolder.GetComponent<Animator>().Play("BaseLayer.Take 001");
-        }
-       
     }
 }
+
+    
+        
+    
+
