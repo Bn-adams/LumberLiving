@@ -8,6 +8,8 @@ public class PlayerCam : MonoBehaviour
     public float sensX;
     public float sensY;
 
+    public bool WantInput = true;
+
     public Transform orientation;
 
     float xRoatation;
@@ -25,17 +27,25 @@ public class PlayerCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+       GetInputSetRotation();
 
-        yRoatation += mouseX;
-        xRoatation -= mouseY;
-        //lock look up and down
-        xRoatation = Mathf.Clamp(xRoatation, -90f, 90f);
-        //rotate cam and orientation
-        transform.rotation = Quaternion.Euler(xRoatation,yRoatation,0);
-        orientation.rotation = Quaternion.Euler(0, yRoatation, 0); 
-        
+      
+    }
+    public void GetInputSetRotation()
+    {
+        if (WantInput)
+        {
+            //get mouse input
+            float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+            float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+            yRoatation += mouseX;
+            xRoatation -= mouseY;
+            //lock look up and down
+            xRoatation = Mathf.Clamp(xRoatation, -90f, 90f);
+            //rotate cam and orientation
+            transform.rotation = Quaternion.Euler(xRoatation, yRoatation, 0);
+            orientation.rotation = Quaternion.Euler(0, yRoatation, 0);
+
+        }
     }
 }

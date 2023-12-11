@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI WoodText;
     public bool isBuring = false;
     private float WoodBurnAmount = 10;
+    //Menu
+    PlayerCam cam;
 
 
 
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
         Movement();
         Chopping();
         BurnWood();
+        UseMouse();
        
 
         Debug.Log(staminaBar.fillAmount);
@@ -154,6 +157,16 @@ public class PlayerController : MonoBehaviour
         if (stats.StaminaCount > stats.MaxStamina) stats.StaminaCount = stats.MaxStamina;
         staminaBar.fillAmount = stats.StaminaCount / stats.MaxStamina;
         slider.value = staminaBar.fillAmount;
+    }
+    public void UseMouse()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            UnityEngine.Cursor.visible = true;
+            
+        }
     }
     
     

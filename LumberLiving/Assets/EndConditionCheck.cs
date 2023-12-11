@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndConditionCheck : MonoBehaviour
 {
@@ -22,14 +23,14 @@ public class EndConditionCheck : MonoBehaviour
     }
     void staminaCheck()
     {
-        if (playerStats != null)
+        if (playerStats.StaminaCount < playerStats.MinStamina)
         {
-            if(playerStats.StaminaCount < 0.05f)
-            {
-                Debug.Log("EndGame");
-                EndGameConditionMet = (true);
-            }
+            EndGameConditionMet = (true);
+            Debug.Log("EndGame");
+            SceneManager.LoadScene(2);
         }
+
+
     }
     void TimerCheck()
     {
@@ -39,6 +40,7 @@ public class EndConditionCheck : MonoBehaviour
             {
                 EndGameConditionMet = (true);
                 Debug.Log("EndGame");
+                SceneManager.LoadScene(2);
             }
         }
     }
