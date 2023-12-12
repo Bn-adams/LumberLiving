@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class TextDisplay : MonoBehaviour
 {
-    public GameObject text;
+    [SerializeField] public GameObject text;
     PlayerStats playerStats;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        
         text.SetActive(false);
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }

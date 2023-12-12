@@ -14,20 +14,27 @@ public class PlayerController : MonoBehaviour
     private float ms;
     private Vector3 moveDirection;
     public Transform orientation;
+
     //Stamina Variables
     private float waitTime = 0.5f;
     public Image staminaBar;
     public Slider slider;
     public bool isAttacking=false;
     public bool isPressed = false;
+
     //Campfire Variables
     private TextDisplay textDisplay;
     [SerializeField] private TextMeshProUGUI WoodText;
     public bool isBuring = false;
     private float WoodBurnAmount = 10;
+
     //Menu
     PlayerCam cam;
 
+    //Building Varibles
+    public Vector3 playerPos;
+    public float buildCost = 5;
+    public GameObject CampPreFab;
 
 
 
@@ -56,10 +63,13 @@ public class PlayerController : MonoBehaviour
         Chopping();
         BurnWood();
         UseMouse();
-       
+        playerPos = transform.position;
+        Building();
 
         Debug.Log(staminaBar.fillAmount);
     }
+
+
     //Controls the player movement and get inputs 
     public void Movement()
     {
@@ -86,6 +96,8 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
+
     private IEnumerator WalkStamDelay()
     {
         
@@ -105,6 +117,9 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+
+
     // stam adjustments made here for chop 
     public IEnumerator Chop()
     {
@@ -125,6 +140,7 @@ public class PlayerController : MonoBehaviour
         isPressed = false;
     }
 
+
     public void BurnWood()
     {
         if(stats != null)
@@ -140,6 +156,7 @@ public class PlayerController : MonoBehaviour
        
         
     }
+
 
    public IEnumerator BurnWoodDelay()
     {
@@ -158,6 +175,8 @@ public class PlayerController : MonoBehaviour
         staminaBar.fillAmount = stats.StaminaCount / stats.MaxStamina;
         slider.value = staminaBar.fillAmount;
     }
+
+
     public void UseMouse()
     {
         if (Input.GetKey(KeyCode.Escape))
@@ -168,8 +187,23 @@ public class PlayerController : MonoBehaviour
             
         }
     }
-    
-    
+    public void Building()
+    {
+        if (stats != null)
+        {
+            if (Input.GetKeyUp(KeyCode.B) && stats.WoodCount > 4 && stats.StaminaCount > buildCost)
+            {
+                playerPos = transform.position;
+                //playerRotation = transform.rotation;
+                Vector3 buildPos = new Vector3(playerPos.x + 5, playerPos.y, playerPos.z);
+                Debug.Log(buildPos);
+                GameObject newCampfire = Instantiate(CampPreFab);
+                newCampfire.transform.position = buildPos;
+
+            }
+        }
+    }
+
 
 
 }   
