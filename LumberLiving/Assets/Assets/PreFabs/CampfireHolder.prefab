@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59d2d25cda7b9e4ea35d2c61329695e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 1833341583050917837, guid: 512d23b30da50f84eb0502002278a4e3, type: 3}
+  burnText: {fileID: 3550600804255986672, guid: 512d23b30da50f84eb0502002278a4e3, type: 3}
 --- !u!1001 &1813021474464733538
 PrefabInstance:
   m_ObjectHideFlags: 0

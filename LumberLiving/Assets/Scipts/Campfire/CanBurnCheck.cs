@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TextDisplay : MonoBehaviour
+public class CanBurnCheck : MonoBehaviour
 {
-    [SerializeField] public GameObject text;
-    PlayerStats playerStats;
     
+    PlayerStats playerStats;
+   
 
     // Start is called before the first frame update
     void Start()
     {
+         
         
-        text.SetActive(false);
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
     //show press f to burn when in zone 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "BurnZone")
         {
-            text.SetActive(true);
+            //burnText.enabled = true; 
+            
             playerStats.CanBurnWood = true;
         }
     }
@@ -29,10 +30,12 @@ public class TextDisplay : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "BurnZone")
         {
-            text.SetActive(false);
+            //burnText.enabled = false;
             playerStats.CanBurnWood = false;
         }
+        
+
     }
 }

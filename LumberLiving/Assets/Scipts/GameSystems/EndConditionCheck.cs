@@ -7,7 +7,7 @@ public class EndConditionCheck : MonoBehaviour
 {
     PlayerStats playerStats;
     GameStats gameStats;
-    private bool EndGameConditionMet = false;
+    public bool EndGameConditionMet = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,7 @@ public class EndConditionCheck : MonoBehaviour
     }
     void staminaCheck()
     {
-        if (playerStats.StaminaCount < playerStats.MinStamina)
+        if (playerStats.StaminaCount == playerStats.MinStamina)
         {
             EndGameConditionMet = (true);
             Debug.Log("EndGame");
@@ -36,7 +36,7 @@ public class EndConditionCheck : MonoBehaviour
     {
         if (gameStats != null)
         {
-            if(gameStats.GameClockCurrent < 0)
+            if(gameStats.GameClockCurrent == 0)
             {
                 EndGameConditionMet = (true);
                 Debug.Log("EndGame");

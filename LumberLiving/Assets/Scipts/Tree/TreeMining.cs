@@ -53,7 +53,7 @@ public class TreeMining : MonoBehaviour
     //checks the player is close enough 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("TreeZone"))
         {
             Debug.Log("InZone");
             canBeHarvested = true;

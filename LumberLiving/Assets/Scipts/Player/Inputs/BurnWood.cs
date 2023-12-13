@@ -6,7 +6,7 @@ using UnityEngine;
 public class BurnWood : MonoBehaviour
 {
     public Animator Burn;
-    private bool hasAdded = false;
+    public bool hasAdded = false;
     PlayerStats playerStats;
     
     // Start is called before the first frame update

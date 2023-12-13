@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,8 +24,9 @@ public class PlayerController : MonoBehaviour
     public bool isPressed = false;
 
     //Campfire Variables
-    private TextDisplay textDisplay;
-    [SerializeField] private TextMeshProUGUI WoodText;
+    
+    [SerializeField] public TextMeshProUGUI WoodText;
+    
     public bool isBuring = false;
     private float WoodBurnAmount = 10;
 
@@ -33,7 +35,8 @@ public class PlayerController : MonoBehaviour
 
     //Building Varibles
     public Vector3 playerPos;
-    public float buildCost = 5;
+    public float buildStamCost = 5;
+    public int buildCost = 5;
     public GameObject CampPreFab;
 
 
@@ -43,8 +46,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
         stats = GameObject.Find("Player").GetComponent<PlayerStats>();
-        textDisplay = GameObject.Find("Campfire").GetComponent<TextDisplay>();
+        
+        //sets the player stats if they are incuded in the player class
         if (stats != null)
         {
             ms = stats.Speed;
@@ -60,11 +65,18 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Movement();
+
         Chopping();
+
         BurnWood();
+
         UseMouse();
+
         playerPos = transform.position;
+
         Building();
+
+        
 
         Debug.Log(staminaBar.fillAmount);
     }
@@ -73,22 +85,24 @@ public class PlayerController : MonoBehaviour
     //Controls the player movement and get inputs 
     public void Movement()
     {
+        //gets the input here 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         if (horizontalInput != 0 || verticalInput != 0)
         {
-            if(stats.StaminaCount > 0)
+            if(stats.StaminaCount > 0)// checks for 0 stam
             {
                 moveDirection = orientation.right * horizontalInput + orientation.forward * verticalInput;
                 rb.velocity = (moveDirection * ms);
                 //StartCoroutine(WalkStamDelay());
 
-                stats.StaminaCount -= stats.WalkCost * Time.deltaTime;
+                stats.StaminaCount -= stats.WalkCost * Time.deltaTime;//applies the stam cost once a second.
                 if (stats.StaminaCount < stats.MinStamina) stats.StaminaCount = stats.MinStamina;
 
                 staminaBar.fillAmount = stats.StaminaCount / stats.MaxStamina;
 
                 slider.value = staminaBar.fillAmount;
+                //caculates and fills the stam bar
             }
             
 
@@ -108,27 +122,28 @@ public class PlayerController : MonoBehaviour
     //Calls the chop logic when right input is pressed and has enough stam 
     public void Chopping()
     {
-        if (Input.GetMouseButton(0) && !isPressed && stats.StaminaCount > stats.AttackCost)
+        if (Input.GetMouseButton(0) && !isPressed && stats.StaminaCount > stats.AttackCost) // checks the player can chop and isnt already amd had enough stam
         {
-
+            
             isAttacking = true;
             StartCoroutine(Chop());
-
+            //calls the chop logic 
 
         }
     }
 
 
 
-    // stam adjustments made here for chop 
+    
     public IEnumerator Chop()
     {
         isPressed = true;
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(waitTime);// delay for animations
 
         isAttacking = false;
         Debug.Log("Attack");
 
+        // stam adjustments made here for chop 
         stats.StaminaCount -= stats.AttackCost;
         if (stats.StaminaCount < stats.MinStamina) stats.StaminaCount = stats.MinStamina;
 
@@ -140,16 +155,16 @@ public class PlayerController : MonoBehaviour
         isPressed = false;
     }
 
-
+    
     public void BurnWood()
     {
         if(stats != null)
         {
-            if (Input.GetKey(KeyCode.F) && stats.CanBurnWood&&!isBuring&&stats.WoodCount != 0 )
+            if (Input.GetKey(KeyCode.F) && stats.CanBurnWood&&!isBuring&&stats.WoodCount != 0 ) // checks player has wood and is pressing to feed fire 
             {
                 
                 isBuring = true;
-                StartCoroutine(BurnWoodDelay());
+                StartCoroutine(BurnWoodDelay());//starts delay on the logic to match up with the ani 
 
             }
         }
@@ -160,16 +175,17 @@ public class PlayerController : MonoBehaviour
 
    public IEnumerator BurnWoodDelay()
     {
-        textDisplay.text.SetActive(false);
+        //logic for the burning of the wood 
         
         yield return new WaitForSeconds(2);
-        textDisplay.text.SetActive(true);
+        
         
 
         stats.WoodCount--;
         WoodText.text = "Wood: " + stats.WoodCount;
+        //adjusts the wood amount.
         isBuring = false;
-       
+       // adds stam here once has been burnt
         stats.StaminaCount = WoodBurnAmount + stats.StaminaCount;
         if (stats.StaminaCount > stats.MaxStamina) stats.StaminaCount = stats.MaxStamina;
         staminaBar.fillAmount = stats.StaminaCount / stats.MaxStamina;
@@ -181,7 +197,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Escape))
         {
-            
+            //unlocks and shows the cursor for the pause menu 
             UnityEngine.Cursor.lockState = CursorLockMode.None;
             UnityEngine.Cursor.visible = true;
             
@@ -191,15 +207,28 @@ public class PlayerController : MonoBehaviour
     {
         if (stats != null)
         {
-            if (Input.GetKeyUp(KeyCode.B) && stats.WoodCount > 4 && stats.StaminaCount > buildCost)
+            if (Input.GetKeyUp(KeyCode.B) && stats.WoodCount > 4 && stats.StaminaCount > buildStamCost) //does all the build checks for the building
             {
-                playerPos = transform.position;
+                playerPos = transform.position;//gets a updates player position 
                 //playerRotation = transform.rotation;
-                Vector3 buildPos = new Vector3(playerPos.x + 5, playerPos.y-1, playerPos.z);
-                Debug.Log(buildPos);
+                Vector3 buildPos = new Vector3(playerPos.x + 5, playerPos.y-1, playerPos.z); // genrates a vector 3 for the spawn position
+                //Debug.Log(buildPos);
                 GameObject newCampfire = Instantiate(CampPreFab);
                 newCampfire.transform.position = buildPos;
+                //adjusts the Wood Amount after building 
+                stats.WoodCount -= buildCost;
+                WoodText.text = "Wood: " + stats.WoodCount;
 
+
+                //adjusting the stamina after building
+                stats.StaminaCount -= buildStamCost;
+                if (stats.StaminaCount < stats.MinStamina) stats.StaminaCount = stats.MinStamina;
+
+                staminaBar.fillAmount = stats.StaminaCount / stats.MaxStamina;
+
+
+
+                slider.value = staminaBar.fillAmount;
             }
         }
     }

@@ -8,7 +8,7 @@ public class CounterDisplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TimerText;
 
     GameStats stats;
-    private int second = 1;
+    
     
     // Start is called before the first frame update
     void Start()
