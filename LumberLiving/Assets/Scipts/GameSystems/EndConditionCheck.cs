@@ -12,7 +12,7 @@ public class EndConditionCheck : MonoBehaviour
     void Start()
     {
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
-        gameStats = GameObject.Find("GameSystems").GetComponent<GameStats>();
+        gameStats = GetComponent<GameStats>();
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class EndConditionCheck : MonoBehaviour
     {
         if (gameStats != null)
         {
-            if(gameStats.GameClockCurrent == 0)
+            if(gameStats.GameClockCurrent < 1)
             {
                 EndGameConditionMet = (true);
                 Debug.Log("EndGame");

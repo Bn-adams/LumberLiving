@@ -14,8 +14,8 @@ public class CounterDisplay : MonoBehaviour
     void Start()
     {
         stats = GameObject.Find("GameSystems").GetComponent<GameStats>();
-        stats.GameClockMax = 300;
-        stats.GameClockCurrent = 300;
+        stats.GameClockMax = 60;
+        stats.GameClockCurrent = 60;
 
     }
 
@@ -27,7 +27,7 @@ public class CounterDisplay : MonoBehaviour
     public void TimerCount()
     {
         stats.GameClockCurrent -= Time.deltaTime;
-        TimerText.text = stats.GameClockCurrent.ToString();
+        TimerText.text = ((int)stats.GameClockCurrent).ToString();
 
         
     }
