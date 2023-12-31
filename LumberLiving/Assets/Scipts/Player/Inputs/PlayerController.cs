@@ -112,13 +112,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private IEnumerator WalkStamDelay()
-    {
-        
-        yield return new WaitForSeconds(1);
-        //stam adjustments for walking 
-       
-    }
     //Calls the chop logic when right input is pressed and has enough stam 
     public void Chopping()
     {
@@ -132,9 +125,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
-    
     public IEnumerator Chop()
     {
         isPressed = true;
@@ -148,14 +138,11 @@ public class PlayerController : MonoBehaviour
         if (stats.StaminaCount < stats.MinStamina) stats.StaminaCount = stats.MinStamina;
 
         staminaBar.fillAmount = stats.StaminaCount / stats.MaxStamina;
-
-
-
         slider.value = staminaBar.fillAmount;
+
         isPressed = false;
     }
 
-    
     public void BurnWood()
     {
         if(stats != null)
@@ -167,20 +154,14 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(BurnWoodDelay());//starts delay on the logic to match up with the ani 
 
             }
-        }
-       
-        
+        } 
     }
-
 
    public IEnumerator BurnWoodDelay()
     {
         //logic for the burning of the wood 
-        
         yield return new WaitForSeconds(2);
-        
-        
-
+      
         stats.WoodCount--;
         WoodText.text = "Wood: " + stats.WoodCount;
         //adjusts the wood amount.

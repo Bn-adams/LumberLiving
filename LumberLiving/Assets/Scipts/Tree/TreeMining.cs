@@ -38,17 +38,12 @@ public class TreeMining : MonoBehaviour
             Vector3 randomPosition = new Vector3(UnityEngine.Random.Range(-1, 1) , 0.2f, UnityEngine.Random.Range(-1, 1)) ;
             Vector3 spawnPosition = randomPosition;
             GameObject newWood = Instantiate(Wood, transform.parent.position + spawnPosition, Quaternion.identity);
-            
         }
-        
     }
     // Update is called once per frame
     void Update()
     {
         ChopCheck();
-
-        
-
     }
     //checks the player is close enough 
     private void OnTriggerEnter(Collider other)
@@ -58,11 +53,7 @@ public class TreeMining : MonoBehaviour
             Debug.Log("InZone");
             canBeHarvested = true;
         }
-
     }
-
-
-    
    //runs the destroy logic when the player is near and attacking
     public void ChopCheck()
     {
@@ -72,5 +63,4 @@ public class TreeMining : MonoBehaviour
             StartCoroutine(TreeDestroy());
         }
     }
-
 }

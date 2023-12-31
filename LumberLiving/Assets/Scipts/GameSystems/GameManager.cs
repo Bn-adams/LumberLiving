@@ -22,22 +22,8 @@ public class GameManager : MonoBehaviour
         gSpawner = GameObject.FindObjectOfType<GroundSpawner>();
         SpawnGround();
 
-        /*
-        for (int i = 0; i < MapSize; i++)
-        {
-
-            Debug.Log("first for loop");
-            for (int j = 0; j < MapSize; j++)
-            {
-                Debug.Log("Second for loop");
-
-                SpawnGround();
-            }
-        }
-        */
-
+       
 
     }
 }
-    // Update is called once per frame
     
