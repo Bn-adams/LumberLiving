@@ -26,9 +26,9 @@ public class PlayerController : MonoBehaviour
     //Campfire Variables
     
     [SerializeField] public TextMeshProUGUI WoodText;
-    
-    public bool isBuring = false;
     private float WoodBurnAmount = 10;
+    public bool isBuring = false;
+   
 
     //Menu
     PlayerCam cam;

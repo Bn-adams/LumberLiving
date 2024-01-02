@@ -27,19 +27,7 @@ public class TreeMining : MonoBehaviour
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
     //used to delay the logic of the on destroy logic till after the animation and spawns then wood then aswell 
-    public IEnumerator TreeDestroy()
-    {
-        isHarvested = true;
-        canBeHarvested = false;
-        yield return new WaitForSeconds(waitTime);
-        GameObject.Destroy(gameObject);
-        if (isHarvested)
-        {
-            Vector3 randomPosition = new Vector3(UnityEngine.Random.Range(-1, 1) , 0.2f, UnityEngine.Random.Range(-1, 1)) ;
-            Vector3 spawnPosition = randomPosition;
-            GameObject newWood = Instantiate(Wood, transform.parent.position + spawnPosition, Quaternion.identity);
-        }
-    }
+   
     // Update is called once per frame
     void Update()
     {
@@ -61,6 +49,19 @@ public class TreeMining : MonoBehaviour
         {
             Debug.Log("CheckComplete");
             StartCoroutine(TreeDestroy());
+        }
+    }
+    public IEnumerator TreeDestroy()
+    {
+        isHarvested = true;
+        canBeHarvested = false;
+        yield return new WaitForSeconds(waitTime);
+        GameObject.Destroy(gameObject);
+        if (isHarvested)
+        {
+            Vector3 randomPosition = new Vector3(UnityEngine.Random.Range(-1, 1), 0.2f, UnityEngine.Random.Range(-1, 1));
+            Vector3 spawnPosition = randomPosition;
+            GameObject newWood = Instantiate(Wood, transform.parent.position + spawnPosition, Quaternion.identity);
         }
     }
 }
