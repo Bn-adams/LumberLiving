@@ -21,12 +21,6 @@ public class PlayerStats : MonoBehaviour
     private bool canBurnWood = false;
 
 
-    
-
-   
-
-
-
     public float Speed { get => speed; set => speed = value; }
     public int WoodCount { get => woodCount; set => woodCount = value; }
     public float MaxStamina { get => maxStamina; set => maxStamina = value; }

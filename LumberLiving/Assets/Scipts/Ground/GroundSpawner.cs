@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundSpawner : MonoBehaviour, Spawner
+public class GroundSpawner : MonoBehaviour, ISpawner
 {
     [SerializeField] private GameObject GroundPreFab;
     private GameStats gameStats;
