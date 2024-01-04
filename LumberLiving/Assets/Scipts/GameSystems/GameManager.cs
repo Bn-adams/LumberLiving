@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
 
-    private Spawner gSpawner;
+    private ISpawner gSpawner;
     private GameStats stats;
 
 

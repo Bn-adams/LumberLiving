@@ -27,7 +27,9 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] public TextMeshProUGUI WoodText;
     private float WoodBurnAmount = 10;
+    private GameStats gStats;
     public bool isBuring = false;
+
    
 
     //Menu
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         stats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        gStats = GameObject.Find("GameSystems").GetComponent<GameStats>();
         
         //sets the player stats if they are incuded in the player class
         if (stats != null)
@@ -158,7 +161,7 @@ public class PlayerController : MonoBehaviour
     }
 
    public IEnumerator BurnWoodDelay()
-    {
+   {
         //logic for the burning of the wood 
         yield return new WaitForSeconds(2);
       
@@ -171,8 +174,10 @@ public class PlayerController : MonoBehaviour
         if (stats.StaminaCount > stats.MaxStamina) stats.StaminaCount = stats.MaxStamina;
         staminaBar.fillAmount = stats.StaminaCount / stats.MaxStamina;
         slider.value = staminaBar.fillAmount;
-    }
+        //Adjusts the timer
+        if (gStats != null) gStats.GameClockCurrent = gStats.GameClockCurrent + 2;
 
+   }
 
     public void UseMouse()
     {

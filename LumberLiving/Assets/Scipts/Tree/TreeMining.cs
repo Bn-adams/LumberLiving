@@ -10,8 +10,6 @@ public class TreeMining : MonoBehaviour
     public bool canBeHarvested;
     public bool isHarvested = false;
     
-   
-    
     [SerializeField]
     private GameObject Wood;
     private float waitTime = 0.7f;
@@ -19,15 +17,12 @@ public class TreeMining : MonoBehaviour
     private PlayerController playerController;
     private PlayerStats stats;
     
-
     // Start is called before the first frame update
     void Start()
     {
         stats = GameObject.Find("Player").GetComponent<PlayerStats>();
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
-    //used to delay the logic of the on destroy logic till after the animation and spawns then wood then aswell 
-   
     // Update is called once per frame
     void Update()
     {
@@ -51,6 +46,7 @@ public class TreeMining : MonoBehaviour
             StartCoroutine(TreeDestroy());
         }
     }
+    //used to delay the logic of the on destroy logic till after the animation and spawns then wood then aswell 
     public IEnumerator TreeDestroy()
     {
         isHarvested = true;

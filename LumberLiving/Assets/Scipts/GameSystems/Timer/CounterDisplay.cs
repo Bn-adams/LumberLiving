@@ -5,7 +5,7 @@ using TMPro;
 
 public class CounterDisplay : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI TimerText;
+    [SerializeField] public TextMeshProUGUI TimerText;
 
     GameStats stats;
     
@@ -14,7 +14,7 @@ public class CounterDisplay : MonoBehaviour
     void Start()
     {
         stats = GameObject.Find("GameSystems").GetComponent<GameStats>();
-        stats.GameClockMax = 60;
+        stats.GameClockMax = 100;
         stats.GameClockCurrent = 60;
 
     }
