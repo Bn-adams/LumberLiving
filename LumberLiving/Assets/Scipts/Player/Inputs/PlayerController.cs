@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerPos = transform.position;//gets a updates player position 
                 //playerRotation = transform.rotation;
-                Vector3 buildPos = new Vector3(playerPos.x + 5, playerPos.y-1, playerPos.z); // genrates a vector 3 for the spawn position
+                Vector3 buildPos = new Vector3(playerPos.x + 5 , playerPos.y-1, playerPos.z); // genrates a vector 3 for the spawn position
                 //Debug.Log(buildPos);
                 GameObject newCampfire = Instantiate(CampPreFab);
                 newCampfire.transform.position = buildPos;
