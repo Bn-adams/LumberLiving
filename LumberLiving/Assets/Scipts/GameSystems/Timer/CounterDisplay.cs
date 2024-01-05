@@ -5,17 +5,17 @@ using TMPro;
 
 public class CounterDisplay : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI TimerText;
+    [SerializeField] public TextMeshProUGUI TimerText;
 
     GameStats stats;
-    private int second = 1;
+    
     
     // Start is called before the first frame update
     void Start()
     {
         stats = GameObject.Find("GameSystems").GetComponent<GameStats>();
-        stats.GameClockMax = 300;
-        stats.GameClockCurrent = 300;
+        stats.GameClockMax = 100;
+        stats.GameClockCurrent = 60;
 
     }
 
@@ -27,7 +27,7 @@ public class CounterDisplay : MonoBehaviour
     public void TimerCount()
     {
         stats.GameClockCurrent -= Time.deltaTime;
-        TimerText.text = stats.GameClockCurrent.ToString();
+        TimerText.text = ((int)stats.GameClockCurrent).ToString();
 
         
     }

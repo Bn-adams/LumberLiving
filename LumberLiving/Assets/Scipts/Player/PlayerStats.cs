@@ -6,8 +6,6 @@ public class PlayerStats : MonoBehaviour
 {
     private float speed = 4f;
 
-    private float jumpHeight = 2f;
-
     private int woodCount = 0;
 
     private float maxStamina;
@@ -23,14 +21,7 @@ public class PlayerStats : MonoBehaviour
     private bool canBurnWood = false;
 
 
-    
-
-   
-
-
-
     public float Speed { get => speed; set => speed = value; }
-    public float JumpHeight { get => jumpHeight; set => jumpHeight = value; }
     public int WoodCount { get => woodCount; set => woodCount = value; }
     public float MaxStamina { get => maxStamina; set => maxStamina = value; }
     public float MinStamina { get => minStamina; set =>minStamina = value; }

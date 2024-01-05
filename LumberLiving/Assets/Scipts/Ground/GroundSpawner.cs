@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundSpawner : MonoBehaviour, Spawner
+public class GroundSpawner : MonoBehaviour, ISpawner
 {
     [SerializeField] private GameObject GroundPreFab;
     private GameStats gameStats;
@@ -24,6 +24,24 @@ public class GroundSpawner : MonoBehaviour, Spawner
                 Vector3 spawnPosition = new Vector3(x * spacing, 0, y * spacing); // Calculate the position based on grid and spacing.
                 GameObject newGround = Instantiate(GroundPreFab, spawnPosition, Quaternion.identity);
                 newGround.transform.parent = transform;
+
+                //gets random number depending on number rotates the prefab one of 4 ways
+                int rand = UnityEngine.Random.Range(1, 5);
+                switch (rand)
+                {
+                    case 1:
+
+                        newGround.transform.Rotate(0, 90f, 0);
+                        break;
+                    case 2:
+                        newGround.transform.Rotate(0, 180f, 0);
+                        break;
+                    case 3:
+                        newGround.transform.Rotate(0, 270f, 0);
+                        break;
+                    case 4:
+                        break;
+                }
             }
         }
         
